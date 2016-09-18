@@ -1,0 +1,46 @@
+<form class="uk-form uk-form-stacked uk-modal-dialog" (submit)="create()">
+
+    <div class="uk-modal-header">
+        <h2>Create logbook entry</h2>
+    </div>
+
+    <div class="uk-form-row">
+        <label for="entry-title" class="uk-form-label">Title *</label>
+
+        <div class="uk-form-controls">
+            <input id="entry-title"
+                   type="text"
+                   name="title"
+                   class="uk-width-1-1">
+        </div>
+    </div>
+
+    <div class="uk-form-row">
+        <label for="entry-content" class="uk-form-label">Content *</label>
+
+        <div class="uk-form-controls">
+                <textarea id="entry-content"
+                          name="content"
+                          class="uk-width-1-1"
+                          rows="5"></textarea>
+        </div>
+    </div>
+
+    <div class="uk-form-row">
+        <label for="entry-meta" class="uk-form-label">Meta</label>
+
+        <div class="uk-form-controls">
+            <input id="entry-meta"
+                   type="text"
+                   name="meta"
+                   class="uk-width-1-1">
+        </div>
+    </div>
+
+    <div class="uk-form-row uk-clearfix">
+        <div class="uk-float-right">
+            <button type="button" class="uk-button uk-button-link" (click)="cancel()">Cancel</button>
+            <button type="submit" class="uk-button uk-button-primary">Create</button>
+        </div>
+    </div>
+</form>

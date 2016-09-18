@@ -1,0 +1,45 @@
+<div class="uk-container uk-container-center">
+    <div class="uk-block">
+        <h1>logbook</h1>
+        <div class="uk-float-right">
+            <button type="button"
+                    class="uk-button uk-button-primary"
+                    routerLink="/create">Create entry
+            </button>
+        </div>
+    </div>
+
+    <div class="uk-grid" routerLink="/update">
+        <div class="uk-width-small-1-1 uk-width-medium-1-3">
+            <h2 class="uk-margin-small">Entry headline</h2>
+            <p class="uk-margin-small uk-text-muted">2016/09/12 12:10pm</p>
+        </div>
+        <div class="uk-width-small-1-1 uk-width-medium-2-3">
+            <p class="uk-margin-small">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
+                ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </p>
+            <p class="uk-margin-small uk-text-muted">#dev-camp #angular2 @karlsruhe +me</p>
+        </div>
+    </div>
+
+    <div class="uk-grid" routerLink="/update">
+        <div class="uk-width-small-1-1 uk-width-medium-1-3">
+            <h2 class="uk-margin-small">Entry headline</h2>
+            <p class="uk-margin-small uk-text-muted">2016/09/12 12:10pm</p>
+        </div>
+        <div class="uk-width-small-1-1 uk-width-medium-2-3">
+            <p class="uk-margin-small">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
+                ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </p>
+            <p class="uk-margin-small uk-text-muted">#dev-camp #angular2 @karlsruhe +me</p>
+        </div>
+    </div>
+</div>
+
+<div id="modal" class="uk-modal">
+    <router-outlet></router-outlet>
+</div>
