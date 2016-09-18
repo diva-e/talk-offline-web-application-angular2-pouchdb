@@ -21,6 +21,10 @@ const logbookRoutes:Routes = [
                 component: LogbookUpdateComponent,
             }
         ]
+    },
+    {
+        path: '**',
+        redirectTo: '/'
     }
 ];
 
