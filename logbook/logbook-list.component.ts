@@ -16,7 +16,7 @@ export class LogbookListComponent implements OnInit, OnDestroy, LogbookRepositor
     ngOnInit() {
         this.repository.registerObserver(this);
         this.repository.fetchEntries()
-            .then(entries => this.entries = entries);
+            .then((entries:Array<LogbookEntry>) => this.entries = entries);
     }
 
     ngOnDestroy():void {
@@ -25,7 +25,7 @@ export class LogbookListComponent implements OnInit, OnDestroy, LogbookRepositor
 
     notify():void {
         this.repository.fetchEntries()
-            .then(entries => this.entries = entries);
+            .then((entries:Array<LogbookEntry>) => this.entries = entries);
     }
 
 }

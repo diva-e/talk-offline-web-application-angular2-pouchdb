@@ -8,4 +8,8 @@ export class LogbookEntry {
     content:String;
     meta:String;
 
+    compareTo(other:LogbookEntry):Number {
+        return Number(other.id) - Number(this.id)
+    }
+
 }

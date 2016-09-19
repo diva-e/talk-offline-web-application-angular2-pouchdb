@@ -42,6 +42,7 @@ export class LogbookRepositoryService {
             this.pouchDb.query(mapFunc, options)
                 .then((result:any) => {
                     let entries:Array<LogbookEntry> = result.rows.map((row:any) => this.mapObjectToEntry(row.doc));
+                    entries.sort((one:LogbookEntry, two:LogbookEntry) => one.compareTo(two));
                     resolve(entries);
                 })
                 .catch(reject);
