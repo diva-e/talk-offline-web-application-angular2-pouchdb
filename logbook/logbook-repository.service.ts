@@ -20,7 +20,7 @@ export class LogbookRepositoryService {
     }
 
     unregisterObserver(observer:LogbookRepositoryObserver):void {
-        var index:Number = this.observer.indexOf(observer);
+        var index:number = this.observer.indexOf(observer);
         if (index > -1) {
             this.observer.splice(index, 1);
         }

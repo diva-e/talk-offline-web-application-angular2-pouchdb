@@ -10,7 +10,7 @@ export class LogbookEntry {
     created:Date;
     updated:Date;
 
-    compareTo(other:LogbookEntry):Number {
+    compareTo(other:LogbookEntry):number {
         return this.created.valueOf() - other.created.valueOf();
     }
 
