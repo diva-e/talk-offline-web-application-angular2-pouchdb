@@ -1,5 +1,7 @@
 import {Component, OnInit, OnDestroy} from "@angular/core";
 import {Router} from "@angular/router";
+import {LogbookRepositoryService} from "./logbook-repository.service";
+import {LogbookEntry} from "./logbook-entry";
 
 declare let UIkit:any;
 
@@ -8,7 +10,9 @@ declare let UIkit:any;
 })
 export class LogbookCreateComponent implements OnInit, OnDestroy {
 
-    constructor(private router:Router) {
+    entry:LogbookEntry = new LogbookEntry();
+
+    constructor(private router:Router, private repository:LogbookRepositoryService) {
     }
 
     ngOnInit() {
@@ -24,7 +28,8 @@ export class LogbookCreateComponent implements OnInit, OnDestroy {
     }
 
     create():void {
-        this.router.navigate(['/']);
+        this.repository.saveEntry(this.entry)
+            .then(() => this.router.navigate(['/']));
     }
 
     cancel():void {

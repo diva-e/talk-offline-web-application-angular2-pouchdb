@@ -17,7 +17,7 @@ const logbookRoutes:Routes = [
                 component: LogbookCreateComponent,
             },
             {
-                path: 'update',
+                path: 'update/:id',
                 component: LogbookUpdateComponent,
             }
         ]

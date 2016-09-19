@@ -11,7 +11,8 @@
             <input id="entry-title"
                    type="text"
                    name="title"
-                   class="uk-width-1-1">
+                   class="uk-width-1-1"
+                   [(ngModel)]="entry.title">
         </div>
     </div>
 
@@ -22,7 +23,8 @@
                 <textarea id="entry-content"
                           name="content"
                           class="uk-width-1-1"
-                          rows="5"></textarea>
+                          rows="5"
+                          [(ngModel)]="entry.content"></textarea>
         </div>
     </div>
 
@@ -33,7 +35,8 @@
             <input id="entry-meta"
                    type="text"
                    name="meta"
-                   class="uk-width-1-1">
+                   class="uk-width-1-1"
+                   [(ngModel)]="entry.meta">
         </div>
     </div>
 

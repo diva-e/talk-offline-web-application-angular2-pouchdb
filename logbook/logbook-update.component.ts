@@ -1,5 +1,7 @@
 import {Component, OnInit, OnDestroy} from "@angular/core";
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute, Params} from "@angular/router";
+import {LogbookRepositoryService} from "./logbook-repository.service";
+import {LogbookEntry} from "./logbook-entry";
 
 declare let UIkit:any;
 
@@ -8,12 +10,21 @@ declare let UIkit:any;
 })
 export class LogbookUpdateComponent implements OnInit, OnDestroy {
 
-    constructor(private router:Router) {
+    entry:LogbookEntry = new LogbookEntry();
+
+    constructor(private router:Router, private activatedRoute:ActivatedRoute, private repository:LogbookRepositoryService) {
     }
 
     ngOnInit() {
-        let uikitModal = UIkit.modal('#modal');
-        uikitModal.show();
+        this.activatedRoute.params.forEach((params:Params) => {
+            let id:String = params['id'];
+            this.repository.fetchEntry(id)
+                .then((entry:LogbookEntry) => this.entry = entry)
+                .then(() => {
+                    let uikitModal = UIkit.modal('#modal');
+                    uikitModal.show();
+                })
+        });
     }
 
     ngOnDestroy() {
@@ -24,7 +35,8 @@ export class LogbookUpdateComponent implements OnInit, OnDestroy {
     }
 
     update():void {
-        this.router.navigate(['/']);
+        this.repository.saveEntry(this.entry)
+            .then(() => this.router.navigate(['/']));
     }
 
     cancel():void {
@@ -32,7 +44,8 @@ export class LogbookUpdateComponent implements OnInit, OnDestroy {
     }
 
     delete():void {
-        this.router.navigate(['/']);
+        this.repository.deleteEntry(this.entry)
+            .then(() => this.router.navigate(['/']));
     }
 
 }
