@@ -10,13 +10,12 @@
          *ngFor="let entry of entries; trackBy:entry?.id">
         <div class="uk-width-small-1-1 uk-width-medium-1-3">
             <h2 class="uk-margin-small">{{entry.title}}</h2>
-            <p class="uk-margin-small uk-text-muted">TODO DATE CREATED</p>
-            <p class="uk-margin-small uk-text-muted">({{entry.id}})</p>
-            <p class="uk-margin-small uk-text-muted">({{entry.rev}})</p>
+            <p class="uk-margin-small uk-text-muted">{{entry.created.toString()}}</p>
         </div>
         <div class="uk-width-small-1-1 uk-width-medium-2-3">
             <p class="uk-margin-small">{{entry.content}}</p>
             <p class="uk-margin-small uk-text-muted">{{entry.meta}}</p>
+            <p class="uk-margin-small uk-text-muted">(id: {{entry.id}}, rev: {{entry.rev}})</p>
         </div>
     </div>
 </div>

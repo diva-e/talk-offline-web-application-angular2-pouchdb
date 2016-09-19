@@ -35,6 +35,8 @@ export class LogbookUpdateComponent implements OnInit, OnDestroy {
     }
 
     update():void {
+        this.entry.updated = new Date();
+
         this.repository.saveEntry(this.entry)
             .then(() => this.router.navigate(['/']));
     }

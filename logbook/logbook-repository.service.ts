@@ -42,7 +42,7 @@ export class LogbookRepositoryService {
             this.pouchDb.query(mapFunc, options)
                 .then((result:any) => {
                     let entries:Array<LogbookEntry> = result.rows.map((row:any) => this.mapObjectToEntry(row.doc));
-                    entries.sort((one:LogbookEntry, two:LogbookEntry) => one.compareTo(two));
+                    entries.sort((one:LogbookEntry, two:LogbookEntry) => two.compareTo(one));
                     resolve(entries);
                 })
                 .catch(reject);
@@ -91,6 +91,8 @@ export class LogbookRepositoryService {
         entry.title = object.title;
         entry.content = object.content;
         entry.meta = object.meta;
+        entry.created = new Date(object.created);
+        entry.updated = new Date(object.updated);
         return entry
     }
 
@@ -101,7 +103,9 @@ export class LogbookRepositoryService {
             type: LogbookEntry.TYPE,
             title: entry.title,
             content: entry.content,
-            meta: entry.meta
+            meta: entry.meta,
+            created: entry.created.toISOString(),
+            updated: entry.updated.toISOString()
         };
     }
 

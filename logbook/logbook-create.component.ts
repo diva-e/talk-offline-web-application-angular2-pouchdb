@@ -28,6 +28,9 @@ export class LogbookCreateComponent implements OnInit, OnDestroy {
     }
 
     create():void {
+        this.entry.id = Date.now().toString();
+        this.entry.created = this.entry.updated = new Date();
+
         this.repository.saveEntry(this.entry)
             .then(() => this.router.navigate(['/']));
     }
