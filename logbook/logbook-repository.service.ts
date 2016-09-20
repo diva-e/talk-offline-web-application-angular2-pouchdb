@@ -7,10 +7,22 @@ declare let emit:Function;
 export class LogbookRepositoryService {
 
     private pouchDb:any;
+    private pouchDbEventEmitter:any;
+    private pouchDbSyncEventEmitter:any;
     private observer:Array<LogbookRepositoryObserver> = [];
 
     constructor() {
-        this.pouchDb = new PouchDB('data');
+        this.pouchDb = new PouchDB('logbook-data');
+
+        this.pouchDbEventEmitter = this.pouchDb.changes({
+            since: 'now',
+            live: true
+        }).on('change', (event) => this.notifyObserver());
+
+        this.pouchDbSyncEventEmitter = this.pouchDb.sync('http://localhost:5984/logbook-data', {
+            live: true,
+            retry: true
+        });
     }
 
     registerObserver(observer:LogbookRepositoryObserver):void {
@@ -64,10 +76,7 @@ export class LogbookRepositoryService {
         return new Promise((resolve, reject) => {
             let object:Object = this.mapEntryToObject(entry);
             this.pouchDb.put(object)
-                .then(() => {
-                    this.notifyObserver();
-                    resolve(entry)
-                })
+                .then(() => resolve(entry))
                 .catch(reject);
         });
     }
@@ -76,10 +85,7 @@ export class LogbookRepositoryService {
         return new Promise((resolve, reject) => {
             let object:Object = this.mapEntryToObject(entry);
             this.pouchDb.remove(object)
-                .then(() => {
-                    this.notifyObserver();
-                    resolve(entry)
-                })
+                .then(() => resolve(entry))
                 .catch(reject);
         });
     }
